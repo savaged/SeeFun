@@ -1,3 +1,3 @@
-# SeeFun
+# See Fun
 
-sandpit for C programming
+sandpit for C programming fun
