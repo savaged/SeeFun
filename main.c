@@ -1,4 +1,4 @@
-void greet();
+#include "greeter.h"
 
 int main()
 {
