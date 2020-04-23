@@ -3,6 +3,7 @@
 * https://prognotes.net/2016/03/gtk-3-c-code-hello-world-tutorial-using-glade-3/ 
 */
 
+#include <string.h>
 #include <main.h>
 #include <gtk/gtk.h>
 
@@ -33,8 +34,6 @@ void on_window_main_destroy()
     gtk_main_quit();
 }
 
-/*
-
 void on_button_one_enter_notify_event(GtkButton *button, gpointer user_data)
 {
     on_button_enter(button);
@@ -61,8 +60,11 @@ void on_button_clicked(GtkButton *button)
 
 void on_button_enter(GtkButton *button)
 {
-    gtk_button_set_label(button, "Yes");
+    const gchar *yes = "Yes";
+    const gchar *text = gtk_button_get_label(button);
+    if (strcmp(text, yes) != 0)
+    {
+        gtk_button_set_label(button, yes);
+    }
 }
-
-*/
 
