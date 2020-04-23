@@ -51,13 +51,15 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+
+
 ## Custom
 
 # vim files
 *.swp
 
-# my output
-bin/*
+# glade tmp files
+*.glade~
 
 # copyrighted course files
 c-programming-course-files/*
