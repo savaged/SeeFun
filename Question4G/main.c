@@ -20,6 +20,8 @@ int main(int argc, char *argv[])
 
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window_main"));
     widgets->label_feedback = GTK_WIDGET(gtk_builder_get_object(builder, "label_feedback")); 
+    widgets->button_one = GTK_WIDGET(gtk_builder_get_object(builder, "button_one")); 
+    widgets->button_two = GTK_WIDGET(gtk_builder_get_object(builder, "button_two")); 
     
     gtk_builder_connect_signals(builder, widgets);
 
@@ -36,14 +38,18 @@ void on_window_main_destroy()
     gtk_main_quit();
 }
 
-void on_button_one_enter_notify_event(GtkButton *button, gpointer user_data)
+void on_button_one_enter_notify_event(GtkButton *button, app_widgets *widgets)
 {
+    /* const gchar *text = gtk_button_get_label(button);*/
     on_button_enter(button);
+    /* gtk_button_set_label(widgets->button_two, text);*/
 }
 
-void on_button_two_enter_notify_event(GtkButton *button, gpointer user_data)
+void on_button_two_enter_notify_event(GtkButton *button, app_widgets *widgets)
 {
+    /* const gchar *text = gtk_button_get_label(button);*/
     on_button_enter(button);
+    /* gtk_button_set_label(widgets->button_one, text);*/
 }
 
 void on_button_one_clicked(GtkButton *button, app_widgets *widgets)
