@@ -1,7 +1,7 @@
 # Reference 1: https://prognotes.net/2015/07/gtk-3-glade-c-programming-template/
 # Reference 2: http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 
-EXE = question4g
+EXE = question4g.app
 # compiler
 CC = gcc
 DEBUG = -g
