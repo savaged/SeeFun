@@ -5,8 +5,8 @@
   <object class="GtkWindow" id="window_main">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Question4G</property>
-    <property name="default_width">640</property>
-    <property name="default_height">480</property>
+    <property name="default_width">440</property>
+    <property name="default_height">240</property>
     <property name="icon_name">face-kiss</property>
     <signal name="destroy" handler="on_window_main_destroy" swapped="no"/>
     <child>
@@ -16,6 +16,8 @@
       <object class="GtkLayout" id="main_panel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="width">440</property>
+        <property name="height">240</property>
         <child>
           <object class="GtkButton" id="button_one">
             <property name="label" translatable="yes">Yes</property>
@@ -24,8 +26,8 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <signal name="clicked" handler="on_button_one_clicked" swapped="no"/>
-            <signal name="enter-notify-event" handler="on_button_one_enter_notify_event" swapped="no"/>
+            <signal name="clicked" handler="on_button_one_clicked" object="label_feedback" swapped="no"/>
+            <signal name="enter-notify-event" handler="on_button_one_enter_notify_event" object="button_two" swapped="no"/>
           </object>
           <packing>
             <property name="x">80</property>
@@ -40,8 +42,8 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <signal name="clicked" handler="on_button_two_clicked" swapped="no"/>
-            <signal name="enter-notify-event" handler="on_button_two_enter_notify_event" swapped="no"/>
+            <signal name="clicked" handler="on_button_two_clicked" object="label_feedback" swapped="no"/>
+            <signal name="enter-notify-event" handler="on_button_two_enter_notify_event" object="button_one" swapped="no"/>
           </object>
           <packing>
             <property name="x">240</property>

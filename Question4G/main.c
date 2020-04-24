@@ -1,5 +1,5 @@
 /* References:
-* https://prognotes.net/2016/12/gtk-glade-get-pointers-to-widgets/
+* https://prognotes.net/2016/12/get-widget-pointer-in-callback-function/
 * https://prognotes.net/2016/03/gtk-3-c-code-hello-world-tutorial-using-glade-3/ 
 */
 
@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
 {
     GtkBuilder *builder; 
     GtkWidget *window;
-    app_widgets *widgets = g_slice_new(app_widgets);
 
     gtk_init(&argc, &argv);
 
@@ -19,11 +18,8 @@ int main(int argc, char *argv[])
     gtk_builder_add_from_file(builder, "Question4G.glade", NULL);
 
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window_main"));
-    widgets->label_feedback = GTK_WIDGET(gtk_builder_get_object(builder, "label_feedback")); 
-    widgets->button_one = GTK_WIDGET(gtk_builder_get_object(builder, "button_one")); 
-    widgets->button_two = GTK_WIDGET(gtk_builder_get_object(builder, "button_two")); 
-    
-    gtk_builder_connect_signals(builder, widgets);
+        
+    gtk_builder_connect_signals(builder, NULL);
 
     g_object_unref(builder);
 
@@ -38,33 +34,37 @@ void on_window_main_destroy()
     gtk_main_quit();
 }
 
-void on_button_one_enter_notify_event(GtkButton *button, app_widgets *widgets)
+void on_button_one_enter_notify_event(GtkButton *button, GtkButton *button_two)
 {
-    /* const gchar *text = gtk_button_get_label(button);*/
+    const gchar *text = gtk_button_get_label(button);
+    gchar button_one_text[3];
+    strcpy(button_one_text, text);
     on_button_enter(button);
-    /* gtk_button_set_label(widgets->button_two, text);*/
+    gtk_button_set_label(button_two, button_one_text);
 }
 
-void on_button_two_enter_notify_event(GtkButton *button, app_widgets *widgets)
+void on_button_two_enter_notify_event(GtkButton *button, GtkButton *button_one)
 {
-    /* const gchar *text = gtk_button_get_label(button);*/
+    const gchar *text = gtk_button_get_label(button);
+    gchar button_two_text[3];
+    strcpy(button_two_text, text);
     on_button_enter(button);
-    /* gtk_button_set_label(widgets->button_one, text);*/
+    gtk_button_set_label(button_one, button_two_text);
 }
 
-void on_button_one_clicked(GtkButton *button, app_widgets *widgets)
+void on_button_one_clicked(GtkButton *button, GtkLabel *label_feedback)
 {
-    on_button_clicked(button, widgets);
+    on_button_clicked(button, label_feedback);
 }
 
-void on_button_two_clicked(GtkButton *button, app_widgets *widgets)
+void on_button_two_clicked(GtkButton *button, GtkLabel *label_feedback)
 {
-    on_button_clicked(button, widgets);
+    on_button_clicked(button, label_feedback);
 }
 
-void on_button_clicked(GtkButton *button, app_widgets *widgets)
+void on_button_clicked(GtkButton *button, GtkLabel *label_feedback)
 {
-    gtk_label_set_text(GTK_LABEL(widgets->label_feedback), "Yes Indeed!");
+    gtk_label_set_text(label_feedback, "Yes Indeed!");
 }
 
 void on_button_enter(GtkButton *button)
