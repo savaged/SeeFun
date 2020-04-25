@@ -37,8 +37,8 @@ void on_window_main_destroy()
 void on_button_one_enter_notify_event(GtkButton *button, GtkButton *button_two)
 {
     const gchar *text = gtk_button_get_label(button);
-    gchar button_one_text[3];
-    strcpy(button_one_text, text);
+    gchar *button_one_text;
+    button_one_text = strdup(text);
     on_button_enter(button);
     gtk_button_set_label(button_two, button_one_text);
 }
@@ -46,8 +46,8 @@ void on_button_one_enter_notify_event(GtkButton *button, GtkButton *button_two)
 void on_button_two_enter_notify_event(GtkButton *button, GtkButton *button_one)
 {
     const gchar *text = gtk_button_get_label(button);
-    gchar button_two_text[3];
-    strcpy(button_two_text, text);
+    gchar *button_two_text;
+    button_two_text = strdup(text);
     on_button_enter(button);
     gtk_button_set_label(button_one, button_two_text);
 }
