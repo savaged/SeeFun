@@ -7,9 +7,11 @@ int main(int argc, char *argv[]);
 
 void on_window_main_destroy();
 
-void on_button_one_enter_notify_event(GtkButton *button, GtkButton *button_two);
+// Not necessary to have fundtion prototypes for callback functions as they are
+//  not called directly in the C code
+/*void on_button_one_enter_notify_event(GtkButton *button, GtkButton *button_two);
 
-void on_button_two_enter_notify_event(GtkButton *button, GtkButton *button_one);
+void on_button_two_enter_notify_event(GtkButton *button, GtkButton *button_one);*/
 
 void on_button_one_clicked(GtkButton *button, GtkLabel *label_feedback);
 
