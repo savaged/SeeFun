@@ -3,7 +3,10 @@
 #include <stdbool.h>
 #include <math.h>
 
+// TODO: make these user arguments 
 #define R 5
+#define H 3
+#define K 1
 
 typedef enum {
     I = 1, 
@@ -15,8 +18,8 @@ typedef enum {
 bool output_quadrant(quadrantType q);
 double get_x(int theta);
 double get_y(int theta);
-double transform_x(double x, quadrantType q);
-double transform_y(double y, quadrantType q);
+double transform_x_for_quadrant(double x, quadrantType q);
+double transform_y_for_quadrant(double y, quadrantType q);
 bool is_in_domain(int theta);
 bool is_in_range(double f);
 
@@ -25,6 +28,7 @@ int main()
     for (int i = I; i <= IV; i++)
     {
         int result = output_quadrant((quadrantType)i);
+
         if (!result)
         {
             exit(EXIT_FAILURE);
@@ -44,8 +48,8 @@ bool output_quadrant(quadrantType q)
         
         if (is_in_range(x) && is_in_range(y))
         {
-            x = transform_x(x, q);
-            y = transform_y(y, q);
+            x = transform_x_for_quadrant(x, q);
+            y = transform_y_for_quadrant(y, q);
             printf("%f, %f\n", x, y);
         }
         else
@@ -85,7 +89,7 @@ double get_y(int theta)
     return value;
 }
 
-double transform_x(double x, quadrantType q)
+double transform_x_for_quadrant(double x, quadrantType q)
 {
     double value = 0;
     switch (q)
@@ -102,7 +106,7 @@ double transform_x(double x, quadrantType q)
     return value;
 }
 
-double transform_y(double y, quadrantType q)
+double transform_y_for_quadrant(double y, quadrantType q)
 {
     double value = 0;
     switch (q)
