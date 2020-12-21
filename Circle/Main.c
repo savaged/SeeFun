@@ -5,19 +5,35 @@
 
 #define R 5
 
-int output_quadrant();
+typedef enum {
+    I = 1, 
+    II, 
+    III, 
+    IV
+} quadrantType;
+
+bool output_quadrant(quadrantType q);
 double get_x(int theta);
 double get_y(int theta);
+double transform_x(double x, quadrantType q);
+double transform_y(double y, quadrantType q);
 bool is_in_domain(int theta);
 bool is_in_range(double f);
 
 int main()
 {
-    int result = output_quadrant();
-    exit(result);
+    for (int i = I; i <= IV; i++)
+    {
+        int result = output_quadrant((quadrantType)i);
+        if (!result)
+        {
+            exit(EXIT_FAILURE);
+        }
+    }
+    exit(EXIT_SUCCESS);
 }
 
-int output_quadrant()
+bool output_quadrant(quadrantType q)
 {
     for (int i = 0; i <= 90; i++)
     {
@@ -28,15 +44,17 @@ int output_quadrant()
         
         if (is_in_range(x) && is_in_range(y))
         {
+            x = transform_x(x, q);
+            y = transform_y(y, q);
             printf("%f, %f\n", x, y);
         }
         else
         {
             printf("%f, %f <- Error: Out of range!\n", x, y);
-            return EXIT_FAILURE;
+            return false;
         }
     }
-    return EXIT_SUCCESS;
+    return true;
 }
 
 double get_x(int theta)
@@ -64,6 +82,40 @@ double get_y(int theta)
 
     value = cosResultInDegrees * (double)R;
 
+    return value;
+}
+
+double transform_x(double x, quadrantType q)
+{
+    double value = 0;
+    switch (q)
+    {
+        case I:
+        case IV:
+            value = x;
+            break;
+        case II:
+        case III:
+            value = x * -1;
+            break;
+    }
+    return value;
+}
+
+double transform_y(double y, quadrantType q)
+{
+    double value = 0;
+    switch (q)
+    {
+        case I:
+        case II:
+            value = y;
+            break;
+        case III:
+        case IV:
+            value = y * -1;
+            break;
+    }
     return value;
 }
 
