@@ -5,8 +5,8 @@
 
 // TODO: make these user arguments 
 #define R 5
-#define H 3
-#define K 1
+#define H 6
+#define K 8
 
 typedef enum {
     I = 1, 
@@ -20,6 +20,8 @@ double get_x(int theta);
 double get_y(int theta);
 double transform_x_for_quadrant(double x, quadrantType q);
 double transform_y_for_quadrant(double y, quadrantType q);
+double shift_x_for_center(double x);
+double shift_y_for_center(double y);
 bool is_in_domain(int theta);
 bool is_in_range(double f);
 
@@ -50,6 +52,10 @@ bool output_quadrant(quadrantType q)
         {
             x = transform_x_for_quadrant(x, q);
             y = transform_y_for_quadrant(y, q);
+            
+            x = shift_x_for_center(x);
+            y = shift_y_for_center(y);
+
             printf("%f, %f\n", x, y);
         }
         else
@@ -120,6 +126,20 @@ double transform_y_for_quadrant(double y, quadrantType q)
             value = y * -1;
             break;
     }
+    return value;
+}
+
+double shift_x_for_center(double x)
+{
+    double value = 0;
+    value = x - H;
+    return value;
+}
+
+double shift_y_for_center(double y)
+{
+    double value = 0;
+    value = y - K;
     return value;
 }
 
