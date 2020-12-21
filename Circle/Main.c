@@ -5,6 +5,7 @@
 
 #define R 5
 
+int output_quadrant();
 double get_x(int theta);
 double get_y(int theta);
 bool is_in_domain(int theta);
@@ -12,26 +13,30 @@ bool is_in_range(double f);
 
 int main()
 {
+    int result = output_quadrant();
+    exit(result);
+}
+
+int output_quadrant()
+{
     for (int i = 0; i <= 90; i++)
     {
         double x, y;
 
-        //printf("DEBUG (prior): %d: %f, %f\n", i, x, y);
         x = get_x(i);
         y = get_y(i);
         
-        //printf("DEBUG (post): %d: %f, %f\n", i, x, y);
         if (is_in_range(x) && is_in_range(y))
         {
             printf("%f, %f\n", x, y);
         }
         else
         {
-            //printf("%f, %f <- Error: Out of range!\n", x, y);
-            exit(EXIT_FAILURE);
+            printf("%f, %f <- Error: Out of range!\n", x, y);
+            return EXIT_FAILURE;
         }
     }
-    exit(EXIT_SUCCESS);
+    return EXIT_SUCCESS;
 }
 
 double get_x(int theta)
