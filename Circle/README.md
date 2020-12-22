@@ -9,4 +9,7 @@ To produce the coordinates sufficient to plot a circle.
 * Compiler: `gcc -Wall -o circle.app Main.c -lm`
 * Graphing: `gnuplot` then `plot 'coords.csv' with lines` after running `plot > coords.csv`
 
+## Configuration
+
+* The r (radius), h & k (centre coordinates) are defined in the `include/circle.h` file
 

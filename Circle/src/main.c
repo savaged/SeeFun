@@ -5,8 +5,6 @@ int main()
 {
     bool result = false;
 
-    apply_defaults();
-
     for (int i = I; i <= IV; i++)
     {
         result = output_quadrant((quadrantType)i);

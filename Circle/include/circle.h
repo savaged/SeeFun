@@ -1,8 +1,8 @@
 #include <stdbool.h>
 
-int r;
-int h;
-int k;
+#define r 5
+#define h 3
+#define k 2
 
 typedef enum {
     I = 1, 
@@ -11,7 +11,6 @@ typedef enum {
     IV
 } quadrantType;
 
-void apply_defaults();
 bool output_quadrant(quadrantType q);
 double get_x(int theta);
 double get_y(int theta);

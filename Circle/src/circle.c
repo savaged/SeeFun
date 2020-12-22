@@ -5,13 +5,6 @@
 #include <string.h>
 #include <math.h>
 
-void apply_defaults()
-{
-    r = 5;
-    h = 0;
-    k = 0;
-}
-
 bool output_quadrant(quadrantType q)
 {
     for (int i = 0; i <= 90; i++)
