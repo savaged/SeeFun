@@ -1,7 +1,7 @@
 # Reference: http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 # This Makefile should be in the src directory of the project
 
-EXE = hello.app
+EXE = ../bin/hello.app
 IDIR = ../include
 ODIR=../obj
 LDIR =../lib
