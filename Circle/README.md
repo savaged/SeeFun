@@ -6,7 +6,7 @@ To produce the coordinates sufficient to plot a circle.
 
 ## Tools
 
-* Compiler: `gcc -Wall -o circle.app Main.c -lm`
+* Build: `make`
 * Graphing: `gnuplot` then `plot 'coords.csv' with lines` after running `plot > coords.csv`
 
 ## Configuration
