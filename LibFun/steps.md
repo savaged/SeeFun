@@ -13,7 +13,7 @@
         ```
 4. Optional: remove the source files and object files
 5. In the consumer of the static library add an include to the library header
-    * Example: `#include "demo.h"
+    * Example: `#include "demo.h"`
 6. Compile consumer source c file
     * Example: `gcc -c main.c` (The -I is the include location of our library)
 7. Build the consumer executable with the object(s) and static library
