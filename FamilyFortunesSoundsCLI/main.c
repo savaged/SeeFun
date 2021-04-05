@@ -4,7 +4,7 @@
 #include <ncurses.h>
 #include <unistd.h>
 
-int kbhit(void)
+int kbhit()
 {
     int ch = getch();
 
@@ -19,7 +19,13 @@ int kbhit(void)
     }
 }
 
-int main(void)
+void banner()
+{
+    clear();
+    printw("Found / Not Found / Top Answer / Quit [f/n/t/q]: ");
+}
+
+int main()
 {
     initscr();
     cbreak();
@@ -27,7 +33,7 @@ int main(void)
     nodelay(stdscr, TRUE);
     scrollok(stdscr, TRUE);
 
-    printw("\nFound / Not Found / Top Answer / Quit [f/n/t/q]\n");
+    banner();
 
     int c;
     while (1)
@@ -54,6 +60,7 @@ int main(void)
                 endwin();
                 break;
             }
+            banner();
         }
         else
         {
