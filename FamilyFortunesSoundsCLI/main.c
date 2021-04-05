@@ -6,7 +6,7 @@
 int main()
 {
     char c;
-    printf("Found / Not Found / Quit [f/n/q]\n");
+    printf("Found / Not Found / Top Answer / Quit [f/n/t/q] then Enter\n");
     while (1)
     {
         scanf("%c", &c);
@@ -17,6 +17,10 @@ int main()
         else if (c == 'n')
         {
             std::system("mpv ~/Audio/Family\\ Fortunes\\ Sounds/NotFound.mp3");
+        }
+        else if (c == 't')
+        {
+            std::system("mpv ~/Audio/Family\\ Fortunes\\ Sounds/TopAnswer.mp3");
         }
         else if (c == 'q')
         {
